@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import './potd.scss'
+import ModalPOTD from './Modal'
 
 function Potd() {
     const [data, setData] = useState({})
@@ -20,8 +21,9 @@ function Potd() {
             <h3 id='date'>{data.date}</h3>
             <img alt={data.title} src={data.hdurl}/>
             <div className='info'>
-                <h4>{data.copyright}</h4>
+                <h4>Photo by:{data.copyright}</h4>
                 <p>{data.explanation}</p>
+                <ModalPOTD />
             </div>    
         </div>
     )
