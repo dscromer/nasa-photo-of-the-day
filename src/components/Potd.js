@@ -16,13 +16,11 @@ function Potd() {
     return (
         <div className='wrapper'>
             <div className='head'>
-                <h1>{data.title}</h1>
+                <h1 className='title'>{data.title}</h1>
             </div>
             <h3 id='date'>{data.date}</h3>
-            <img alt={data.title} src={data.hdurl}/>
+            <img className='image' alt={data.title} src={data.hdurl}/>
             <div className='info'>
-                <h4>Photo by:{data.copyright}</h4>
-                <p>{data.explanation}</p>
                 <ModalPOTD />
             </div>    
         </div>
