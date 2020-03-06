@@ -2,15 +2,16 @@ import React, { useState } from 'react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styled from 'styled-components'
+//import Moment from 'react-moment'
 
 const MyDatePicker = styled(DatePicker)`
-
+    margin-bottom: 10px;
 `
 
-function DateSelector() {
-    const [startDate, setStartDate] = useState(new Date());
+function DateSelector(props) {
+    console.log(props);
     return (
-      <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
+      <MyDatePicker selected={props.startDate} onChange={date => {props.setStartDate(date)}} />
     );
   };
 

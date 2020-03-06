@@ -4,7 +4,7 @@ import axios from 'axios'
 import ModalPOTD from './Modal'
 import styled from "styled-components";
 import DateSelector from './DateSelector';
-import headImg from '../photos/galaxy.jpg'
+import headImg from '../photos/galaxy.jpg';
 
 const Wrapper = styled.div`
     display: flex;
@@ -51,21 +51,21 @@ const Info = styled.div`
 
 function Potd() {
     const [data, setData] = useState({})
+    const [startDate, setStartDate] = useState('');
+
     useEffect(() => {
         axios
-        .get(`https://api.nasa.gov/planetary/apod?api_key=M05JlF0Bi1C55mhAmKNlfb3v7HcJq6IrksKirc1E`)
+        .get(`https://api.nasa.gov/planetary/apod?api_key=M05JlF0Bi1C55mhAmKNlfb3v7HcJq6IrksKirc1E&date=${startDate}`)
         .then(res => setData(res.data))
         .catch(err => `You hit an error: ${err}`)
-    }, [])
-
-    console.log(data);
+    }, [startDate]);
     return (
         <Wrapper>
             <Header>
                 <Title>{data.title}</Title>
             </Header>
             <Date>{data.date}</Date>
-           <DateSelector />
+           <DateSelector startDate={startDate} setStartDate={setStartDate}/>
             <Photo alt={data.title} src={data.hdurl}/>
             <Info>
                 <ModalPOTD />
